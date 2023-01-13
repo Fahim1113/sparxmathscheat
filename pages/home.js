@@ -1,4 +1,4 @@
-import { useState,  useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Router from "next/router";
@@ -7,7 +7,7 @@ import styles from "../styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-function Home(props) {
+function home(props) {
   const [search, setSearch] = useState("")
   const [data, setData] = useState([])
   const {
@@ -48,4 +48,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default home;
