@@ -7,7 +7,7 @@ import styles from "../styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-function home(props) {
+function Home(props) {
   const [search, setSearch] = useState("")
   const [data, setData] = useState([])
   const {
@@ -48,4 +48,4 @@ function home(props) {
   );
 }
 
-export default home;
+export default Home;
