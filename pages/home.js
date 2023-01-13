@@ -42,7 +42,6 @@ function Home(props) {
           />
           <button className={`btn btn-light text-dark`}>Add answer</button>
         </div>
-        <div>{}</div>
       </main>
     </>
   );
