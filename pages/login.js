@@ -111,7 +111,7 @@ export default function Home() {
             }}
           />
           <Link href={"/register"} className={`${inter.className}`}>
-            Don't have an account? Click this to create one.
+            Do not have an account? Click this to create one.
           </Link>
         </div>
       </main>
