@@ -85,7 +85,7 @@ export default function Home() {
               if (username === "" || password === "")
                 setErr("You cannot leave any fields empty");
               else
-                fetch("http://localhost:3000/api/login", {
+                fetch("/api/login", {
                   method: "POST",
                   body: JSON.stringify({
                     username: username,
@@ -111,7 +111,7 @@ export default function Home() {
             }}
           />
           <Link href={"/register"} className={`${inter.className}`}>
-            Don't have an account? Click this to create one.
+            Do not have an account? Click this to create one.
           </Link>
         </div>
       </main>
