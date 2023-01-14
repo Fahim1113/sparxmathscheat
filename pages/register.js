@@ -24,7 +24,7 @@ export default function Register() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main
-        className={`bg-dark d-flex justify-content-center align-items-center flex-column ${inter.className}`}
+        className={`bg-dark d-flex justify-content-center align-items-center flex-column ${styles.main} ${inter.className}`}
       >
         <div className={`container-fluid bg-light ${styles.box}`}>
           <h1 className={`text-dark text-center`}>Register</h1>
