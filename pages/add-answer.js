@@ -7,7 +7,7 @@ import { Inter } from "@next/font/google";
 import styles from "../styles/AddAnswer.module.css";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function addAnswer() {
+export default function AddAnswer() {
   const [bookworkCode, setBookworkCode] = useState("");
   const [answer, setAnswer] = useState("");
   const [err, setErr] = useState();
