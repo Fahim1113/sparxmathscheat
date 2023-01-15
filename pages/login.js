@@ -53,7 +53,6 @@ export default function Home() {
             <input
               type={viewPassword ? "text" : "password"}
               className="form-control form-control-lg"
-              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
