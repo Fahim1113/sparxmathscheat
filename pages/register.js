@@ -24,7 +24,7 @@ export default function Register() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main
-        className={`bg-dark d-flex justify-content-center align-items-center flex-column ${inter.className}`}
+        className={`bg-dark d-flex justify-content-center align-items-center flex-column ${styles.main} ${inter.className}`}
       >
         <div className={`container-fluid bg-light ${styles.box}`}>
           <h1 className={`text-dark text-center`}>Register</h1>
@@ -56,7 +56,6 @@ export default function Register() {
             <input
               type={viewPassword ? "text" : "password"}
               className="form-control form-control-lg"
-              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
@@ -85,7 +84,6 @@ export default function Register() {
             type={"password"}
             className="form-control form-control-lg"
             id="passwordConfirm"
-            placeholder="Confirm Password"
             onChange={(e) => setPasswordConfirm(e.target.value)}
             value={passwordConfirm}
           />

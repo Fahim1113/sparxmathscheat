@@ -1,17 +1,18 @@
 import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Inter } from "@next/font/google";
-import styles from "../styles/Login.module.css";
+import styles from "../styles/AddAnswer.module.css";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [viewPassword, setViewPassword] = useState(false);
-  const [err, setErr] = useState("");
+export default function AddAnswer() {
+  const [bookworkCode, setBookworkCode] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [err, setErr] = useState();
+  const { query } = useRouter();
+
   return (
     <>
       <Head>
@@ -24,21 +25,36 @@ export default function Home() {
         className={`bg-dark d-flex justify-content-center align-items-center flex-column ${inter.className} ${styles.main}`}
       >
         <div className={`container bg-light rounded ${styles.box}`}>
-          <h1 className={`text-dark text-center`}>Login</h1>
+          <h1 className={`text-dark text-center`}>Add answer</h1>
           <div
             style={{
               height: 50,
             }}
           />
           <label htmlFor="username" className="form-label text-dark">
-            Username:
+            Bookwork code:
           </label>
           <input
             type="text"
             className={`form-control form-control-lg`}
             id="username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
+            onChange={(e) => setBookworkCode(e.target.value.toUpperCase())}
+            value={bookworkCode}
+          />
+          <div
+            style={{
+              height: 30,
+            }}
+          />
+          <label htmlFor="username" className="form-label text-dark">
+            Answer:
+          </label>
+          <input
+            type="text"
+            className={`form-control form-control-lg`}
+            id="username"
+            onChange={(e) => setAnswer(e.target.value)}
+            value={answer}
           />
           <div
             style={{
@@ -46,29 +62,6 @@ export default function Home() {
             }}
           />
 
-          <label htmlFor="password" className="form-label text-dark">
-            Password:
-          </label>
-          <div className="input-group" id="password">
-            <input
-              type={viewPassword ? "text" : "password"}
-              className="form-control form-control-lg"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
-            <button
-              className="input-group-text"
-              onClick={() => {
-                setViewPassword(!viewPassword);
-              }}
-            >
-              {viewPassword ? (
-                <AiFillEyeInvisible style={{ fontSize: "1.25rem" }} />
-              ) : (
-                <AiFillEye style={{ fontSize: "1.25rem" }} />
-              )}
-            </button>
-          </div>
           <div
             style={{
               height: 5,
@@ -77,18 +70,19 @@ export default function Home() {
           <p style={{ fontSize: "15px", color: "red" }}>{err}</p>
           <input
             type="submit"
-            value="Login"
+            value="Add answer"
             className={`btn btn-lg btn-primary w-100 ${inter.className}`}
             onClick={(e) => {
               e.preventDefault();
-              if (username === "" || password === "")
+              if (bookworkCode === "" || answer === "")
                 setErr("You cannot leave any fields empty");
               else
-                fetch("http://localhost:3000/api/login", {
+                fetch("/api/add-answer", {
                   method: "POST",
                   body: JSON.stringify({
-                    username: username,
-                    password: password,
+                    username: query.username,
+                    bookworkCode: bookworkCode,
+                    answer: answer,
                   }),
                 })
                   .then((res) => res.json())
@@ -97,21 +91,13 @@ export default function Home() {
                       Router.push(
                         {
                           pathname: "/home",
-                          query: { username: username },
+                          query: { username: query.username },
                         },
                         "/home"
                       );
                   });
             }}
           />
-          <div
-            style={{
-              height: 12,
-            }}
-          />
-          <Link href={"/register"} className={`${inter.className}`}>
-            Don't have an account? Click this to create one.
-          </Link>
         </div>
       </main>
     </>
