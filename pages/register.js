@@ -56,7 +56,6 @@ export default function Register() {
             <input
               type={viewPassword ? "text" : "password"}
               className="form-control form-control-lg"
-              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
@@ -85,7 +84,6 @@ export default function Register() {
             type={"password"}
             className="form-control form-control-lg"
             id="passwordConfirm"
-            placeholder="Confirm Password"
             onChange={(e) => setPasswordConfirm(e.target.value)}
             value={passwordConfirm}
           />
